@@ -1,4 +1,4 @@
-# about prject 
+# about prject insights from eda 
 1. Regional Distribution of Transactions
 
 Insight: North America and Europe dominate the transaction count, suggesting a strong customer base in these regions. South America has a smaller transaction volume, indicating a potential growth opportunity in that market.
