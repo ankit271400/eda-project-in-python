@@ -1,1 +1,110 @@
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, NavLink } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { MapPin } from "lucide-react";
+
+const Navbar = () => (
+  <nav className="bg-blue-600 text-white p-4 flex justify-between">
+    <div className="text-xl font-bold">TechNova Innovations</div>
+    <div className="space-x-4">
+      <NavLink to="/" className="hover:underline">Home</NavLink>
+      <NavLink to="/services" className="hover:underline">Services</NavLink>
+      <NavLink to="/about" className="hover:underline">About Us</NavLink>
+      <NavLink to="/contact" className="hover:underline">Contact Us</NavLink>
+    </div>
+  </nav>
+);
+
+const HomePage = () => (
+  <div className="text-center p-10">
+    <h1 className="text-4xl font-bold mb-4">Innovating the Future with Technology</h1>
+    <p className="text-lg mb-6">At TechNova Innovations, we deliver cutting-edge solutions to power your business success.</p>
+    <Button className="bg-blue-600 text-white px-6 py-2 rounded-xl">Learn More</Button>
+  </div>
+);
+
+const ServicesPage = () => (
+  <div className="p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {[
+      { title: "Web Development", description: "Building modern and responsive websites." },
+      { title: "Cloud Solutions", description: "Scalable and secure cloud infrastructure." },
+      { title: "AI/ML Services", description: "Harness the power of artificial intelligence." },
+    ].map((service, index) => (
+      <Card key={index} className="shadow-md">
+        <CardContent>
+          <h2 className="text-xl font-bold mb-2">{service.title}</h2>
+          <p>{service.description}</p>
+        </CardContent>
+      </Card>
+    ))}
+  </div>
+);
+
+const AboutUsPage = () => (
+  <div className="p-10">
+    <h1 className="text-3xl font-bold mb-4">About Us</h1>
+    <p className="mb-6">Our mission is to drive innovation through cutting-edge technology solutions.</p>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[
+        { name: "Jane Doe", role: "CEO", img: "https://via.placeholder.com/150" },
+        { name: "John Smith", role: "CTO", img: "https://via.placeholder.com/150" },
+        { name: "Emily Davis", role: "Lead Developer", img: "https://via.placeholder.com/150" },
+      ].map((member, index) => (
+        <Card key={index} className="shadow-md">
+          <img src={member.img} alt={member.name} className="w-full h-40 object-cover" />
+          <CardContent>
+            <h2 className="text-xl font-bold mb-1">{member.name}</h2>
+            <p>{member.role}</p>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+);
+
+const ContactUsPage = () => (
+  <div className="p-10">
+    <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
+    <form className="space-y-4">
+      <input
+        type="text"
+        placeholder="Name"
+        className="w-full p-2 border rounded-lg focus:outline-blue-500"
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        className="w-full p-2 border rounded-lg focus:outline-blue-500"
+      />
+      <textarea
+        placeholder="Message"
+        className="w-full p-2 border rounded-lg focus:outline-blue-500"
+        rows="5"
+      ></textarea>
+      <Button className="bg-blue-600 text-white px-6 py-2 rounded-xl">Submit</Button>
+    </form>
+    <div className="mt-10">
+      <h2 className="text-xl font-bold">Our Location</h2>
+      <div className="flex items-center space-x-2">
+        <MapPin className="text-blue-600" />
+        <p>123 Innovation Drive, Tech City</p>
+      </div>
+    </div>
+  </div>
+);
+
+const App = () => (
+  <Router>
+    <Navbar />
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/services" element={<ServicesPage />} />
+      <Route path="/about" element={<AboutUsPage />} />
+      <Route path="/contact" element={<ContactUsPage />} />
+    </Routes>
+  </Router>
+);
+
+export default App;
 
